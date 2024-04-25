@@ -1,10 +1,15 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom'
 
 export default function Header() {
 
-    let path = useLocation();
-    if (path.pathname !== '/login') {
+    let cart = useSelector((state) => state.cart);
+
+    console.log(cart);
+
+    // let path = useLocation();
+    // if (path.pathname !== '/login') {
 
         return (
             <nav className="colorlib-nav" role="navigation">
@@ -35,15 +40,16 @@ export default function Header() {
                                     {/* <li><Link to="/admin">Administrator</Link></li> */}
                                     <li><Link to="/adminlogin">Admin Login</Link></li>
                                     <li className="cart"><Link to="/cart">
-                                        <button type="button" class="btn btn-light position-relative">
-                                        <i className="icon-shopping-cart"></i> 
-                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                                99+
-                                                <span class="visually-hidden">unread messages</span>
+                                        <button type="button" className="btn btn-light position-relative">
+                                            <i className="icon-shopping-cart"></i>
+                                            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            {cart.length}
+                                                <span className="visually-hidden">unread messages</span>
                                             </span>
                                         </button>
                                         {/* <i className="icon-shopping-cart"></i>  */}
-                                        Cart [0]</Link></li>
+                                        Cart [{cart.length}]</Link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -76,9 +82,3 @@ export default function Header() {
 
         )
     }
-    else {
-        return (
-            <div></div>
-        )
-    }
-}

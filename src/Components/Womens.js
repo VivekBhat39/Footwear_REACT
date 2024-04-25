@@ -35,162 +35,162 @@ export default function Womens() {
 
 
             {/*--------------- Product Sec Start---------------- */}
-            <div class="colorlib-product">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+            <div className="colorlib-product">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
                             <h2>View All Products</h2>
                         </div>
                     </div>
-                    <div class="row row-pb-md">
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                    <div className="row row-pb-md">
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-1.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-2.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Minam Meaghan</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-10.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-10.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-5.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-5.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
 
                         
-                        <div class="w-100"></div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-9.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="w-100"></div>
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-9.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-10.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-10.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-11.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-11.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-12.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-12.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="w-100"></div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-13.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="w-100"></div>
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-13.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-14.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-14.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-15.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-15.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-lg-3 mb-4 text-center">
-                            <div class="product-entry border">
-                                <a href="#" class="prod-img">
-                                    <img src="images/item-16.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+                        <div className="col-md-3 col-lg-3 mb-4 text-center">
+                            <div className="product-entry border">
+                                <a href="#" className="prod-img">
+                                    <img src="images/item-16.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
                                 </a>
-                                <div class="desc">
+                                <div className="desc">
                                     <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                                    <span class="price">$139.00</span>
+                                    <span className="price">$139.00</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <div class="block-27">
+                    <div className="row">
+                        <div className="col-md-12 text-center">
+                            <div className="block-27">
                                 <ul>
-                                    <li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
-                                    <li class="active"><span>1</span></li>
+                                    <li><a href="#"><i className="ion-ios-arrow-back"></i></a></li>
+                                    <li className="active"><span>1</span></li>
                                     <li><a href="#">2</a></li>
                                     <li><a href="#">3</a></li>
                                     <li><a href="#">4</a></li>
                                     <li><a href="#">5</a></li>
-                                    <li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
+                                    <li><a href="#"><i className="ion-ios-arrow-forward"></i></a></li>
                                 </ul>
                             </div>
                         </div>

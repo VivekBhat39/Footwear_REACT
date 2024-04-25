@@ -1,28 +1,54 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import cartimg from '../images/item-6.jpg'
 import cartimg2 from '../images/item-7.jpg'
 import cartimg3 from '../images/item-8.jpg'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { storeRemoveProduct, incrementQuantity, decrementQuantity } from '../state/cartSlice'
 
 
 export default function Cart() {
-	let [count, setCount] = useState(0);
+	
+	let alltotal = 0;
 
-	function increment() {
-		setCount = (count + 1);
-	}
+	let [count, setCount] = useState(1);
 
-	function decrement() {
-		setCount = (count - 1);
-	}
+	let data = useSelector((state) => state.cart);
+	let dispatch = useDispatch();
+	// console.log(data);
+
+	// function removeProduct(e, product) {
+	// 	e.preventDefault();
+	// 	dispatch(storeRemoveProduct(product.id));
+	//   }
+
+	function handleIncrement(productId) {
+		// alert(productId)
+		dispatch(incrementQuantity(productId));
+	};
+
+	function handleDecrement(productId) {
+		dispatch(decrementQuantity(productId));
+	};
+
+
+	// useEffect(()=>{
+	// 	let alltotal = 0;
+	// 	for (let index = 0; index < data.length; index++) {
+	// 		const element = data[index];
+	// 		if (element[i]) {
+	// 		}
+
+	// 	}
+	// },[])
 
 	return (
 		<div>
-			<div class="breadcrumbs">
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<p class="bread"><span><a href="index.html">Home</a></span> / <span>Shopping Cart</span></p>
+			<div className="breadcrumbs">
+				<div className="container">
+					<div className="row">
+						<div className="col">
+							<p className="bread"><span><a href="index.html">Home</a></span> / <span>Shopping Cart</span></p>
 						</div>
 					</div>
 				</div>
@@ -30,162 +56,99 @@ export default function Cart() {
 
 
 
-			<div class="container">
-				<div class="row row-pb-lg">
-					<div class="col-md-10 offset-md-1">
-						<div class="process-wrap">
-							<div class="process text-center active">
-								<p><span>01</span></p>
-								<h3>Shopping Cart</h3>
-							</div>
-							<div class="process text-center">
-								<p><span>02</span></p>
-								<h3>Checkout</h3>
-							</div>
-							<div class="process text-center">
-								<p><span>03</span></p>
-								<h3>Order Complete</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row row-pb-lg">
-					<div class="col-md-12">
-						<div class="product-name d-flex">
-							<div class="one-forth text-left px-4">
+			<div className="container">
+				<div className="row row-pb-lg">
+					<div className="col-md-12">
+						<div className="product-name d-flex">
+							<div className="one-forth text-left px-4">
 								<span>Product Details</span>
 							</div>
-							<div class="one-eight text-center">
+							<div className="one-eight text-center">
 								<span>Price</span>
 							</div>
-							<div class="one-eight text-center">
+							<div className="one-eight text-center">
 								<span>Quantity</span>
 							</div>
-							<div class="one-eight text-center">
+							<div className="one-eight text-center">
 								<span>Total</span>
 							</div>
-							<div class="one-eight text-center px-4">
+							<div className="one-eight text-center px-4">
 								<span>Remove</span>
 							</div>
 						</div>
-						<div class="product-cart d-flex">
-							<div class="one-forth">
-								<div class="product-img" style={{ backgroundImage: `url(${cartimg})` }}>
-								</div>
-								<div class="display-tc">
-									<h3>Product One</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$68.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<form action="#">
-										<input type="text" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100" />
-									</form>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$120.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
-							</div>
-						</div>
-						<div class="product-cart d-flex">
-							<div class="one-forth">
-								<div class="product-img" style={{ backgroundImage: `url(${cartimg2})` }}>
-								</div>
-								<div class="display-tc">
-									<h3>Product Two</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$68.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<form action="#">
-										<input type="text" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100" />
-									</form>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$120.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
-							</div>
-						</div>
-						<div class="product-cart d-flex">
-							<div class="one-forth">
-								<div class="product-img" style={{ backgroundImage: `url(${cartimg3})` }}>
-								</div>
-								<div class="display-tc">
-									<h3>Product Three</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$68.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100" />
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$120.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
-							</div>
-						</div>
+
+						{
+							data.map((eachData) => {
+
+								alltotal += eachData.price * count
+
+
+								return (
+									<div className="product-cart d-flex">
+										<div className="one-forth">
+											<div className="product-img" style={{ backgroundImage: `url(${eachData.image})` }}>
+											</div>
+											<div className="display-tc">
+												<h3>{eachData.title}</h3>
+											</div>
+										</div>
+										<div className="one-eight text-center">
+											<div className="display-tc">
+												<span className="price">₹ {eachData.price}</span>
+											</div>
+										</div>
+										<div className="one-eight text-center">
+											<div className="display-tc">
+												<div className='d-flex'>
+													<button className='btn btn-primary' onClick={() => handleDecrement(eachData.id)}>-</button>
+													<input type="text" name="quantity" className="form-control input-number text-center" value={eachData.quantity} min="1" max="100" />
+													<button className='btn btn-primary' onClick={() => handleIncrement(eachData.id)}>+</button>
+												</div>
+											</div>
+										</div>
+										<div className="one-eight text-center">
+											<div className="display-tc">
+												<span className="price">₹ {eachData.price * eachData.quantity}</span>
+											</div>
+										</div>
+										<div className="one-eight text-center">
+											<div className="display-tc">
+												<button className='btn btn-secondary' onClick={() => dispatch(storeRemoveProduct(eachData.id))}>X</button>
+											</div>
+										</div>
+									</div>
+								)
+							})
+						}
+
 					</div>
 				</div>
-				<div class="row row-pb-lg">
-					<div class="col-md-12">
-						<div class="total-wrap">
-							<div class="row">
-								<div class="col-sm-8">
+				<div className="row row-pb-lg">
+					<div className="col-md-12">
+						<div className="total-wrap">
+							<div className="row">
+								<div className="col-sm-8">
 									<form action="#">
-										<div class="row form-group">
-											<div class="col-sm-9">
-												<input type="text" name="quantity" class="form-control input-number" placeholder="Your Coupon Number..." />
+										<div className="row form-group">
+											<div className="col-sm-9">
+												<input type="text" name="quantity" className="form-control input-number" placeholder="Your Coupon Number..." />
 											</div>
-											<div class="col-sm-3">
-												<input type="submit" value="Apply Coupon" class="btn btn-primary" />
+											<div className="col-sm-3">
+												<input type="submit" value="Apply Coupon" className="btn btn-primary" />
 											</div>
 										</div>
 									</form>
 								</div>
-								<div class="col-sm-4 text-center">
-									<div class="total">
-										<div class="sub">
+								<div className="col-sm-4 text-center">
+									<div className="total">
+										<div className="sub">
 											<p><span>Subtotal:</span> <span>$200.00</span></p>
 											<p><span>Delivery:</span> <span>$0.00</span></p>
 											<p><span>Discount:</span> <span>$45.00</span></p>
 										</div>
-										<div class="grand-total">
-											<p><span><strong>Total:</strong></span> <span>$450.00</span></p>
+										<div className="grand-total">
+											{/* <p><span><strong>Total:</strong></span> <span>$450.00</span></p> */}
+											<p><span><strong>Total:</strong></span> <span>{alltotal}</span></p>
 										</div>
 									</div>
 								</div>
@@ -194,53 +157,53 @@ export default function Cart() {
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+				<div className="row">
+					<div className="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
 						<h2>Related Products</h2>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+				<div className="row">
+					<div className="col-md-3 col-lg-3 mb-4 text-center">
+						<div className="product-entry border">
+							<a href="#" className="prod-img">
+								<img src="images/item-1.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
 							</a>
-							<div class="desc">
+							<div className="desc">
 								<h2><a href="#">Women's Boots Shoes Maca</a></h2>
-								<span class="price">$139.00</span>
+								<span className="price">$139.00</span>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+					<div className="col-md-3 col-lg-3 mb-4 text-center">
+						<div className="product-entry border">
+							<a href="#" className="prod-img">
+								<img src="images/item-2.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
 							</a>
-							<div class="desc">
+							<div className="desc">
 								<h2><a href="#">Women's Minam Meaghan</a></h2>
-								<span class="price">$139.00</span>
+								<span className="price">$139.00</span>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/item-3.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+					<div className="col-md-3 col-lg-3 mb-4 text-center">
+						<div className="product-entry border">
+							<a href="#" className="prod-img">
+								<img src="images/item-3.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
 							</a>
-							<div class="desc">
+							<div className="desc">
 								<h2><a href="#">Men's Taja Commissioner</a></h2>
-								<span class="price">$139.00</span>
+								<span className="price">$139.00</span>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-lg-3 mb-4 text-center">
-						<div class="product-entry border">
-							<a href="#" class="prod-img">
-								<img src="images/item-4.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template" />
+					<div className="col-md-3 col-lg-3 mb-4 text-center">
+						<div className="product-entry border">
+							<a href="#" className="prod-img">
+								<img src="images/item-4.jpg" className="img-fluid" alt="Free html5 bootstrap 4 template" />
 							</a>
-							<div class="desc">
+							<div className="desc">
 								<h2><a href="#">Russ Men's Sneakers</a></h2>
-								<span class="price">$139.00</span>
+								<span className="price">$139.00</span>
 							</div>
 						</div>
 					</div>

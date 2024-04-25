@@ -12,6 +12,8 @@ function Dashboard() {
     }
     return (
         <>
+
+        {/* Outlet */}
             <div className="div">
                 <div className="row">
                     <div className="col-lg-2">

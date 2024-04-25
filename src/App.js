@@ -44,24 +44,24 @@ function App() {
           <Route path='/cart' element={<Cart />}></Route>
           <Route path='/adminlogin' element={<Login />}></Route>
 
-          <Route path='/admin' element={<Dashboard/>}>
-            <Route path='/admin/dashboard' element={<Dashboard2/>}/>
-            <Route path='/admin/productcategory' element={<ProductCategory/>}/>
-            <Route path='/admin/productlists' element={<Product/>}/>
-            <Route path='/admin/addproduct' element={<AddProduct/>}/>
-            <Route path='/admin/addproduct/:id' element={<AddProduct/>}/>
-            <Route path='/admin/order' element={<Order/>}/>
-            <Route path='/admin/fixedorder' element={<Fixedorder/>}/>
-            <Route path='/admin/form' element={<Form/>}/>
+          <Route path='/admin' element={<Dashboard />}>
+            <Route path='/admin/dashboard' element={<Dashboard2 />} />
+            <Route path='/admin/productcategory' element={<ProductCategory />} />
+            <Route path='/admin/productlists' element={<Product />} />
+            <Route path='/admin/addproduct' element={<AddProduct />} />
+            <Route path='/admin/addproduct/:id' element={<AddProduct />} />
+            <Route path='/admin/order' element={<Order />} />
+            <Route path='/admin/fixedorder' element={<Fixedorder />} />
+            <Route path='/admin/form' element={<Form />} />
           </Route>
-            <Route path='/' element={<Logout/>}/>
+          {/* <Route path='/' element={<Logout />} /> */}
 
 
         </Routes>
-            {/* <Admins/> */}
+        {/* <Admins/> */}
         <Footer />
       </BrowserRouter>
-      
+
     </div>
   );
 }

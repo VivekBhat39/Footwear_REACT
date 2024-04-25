@@ -54,8 +54,8 @@ function AddProduct() {
                     console.log(res.data);
                     navigate("/admin/productlists")
                 })
-            // console.log(data);
-
+                
+console.log(data);
         }
 
     }
