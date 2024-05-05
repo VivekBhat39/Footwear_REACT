@@ -33,6 +33,8 @@ export const cartSlice = createSlice({
             } else {
                 state.push(action.payload)
             }
+
+            localStorage.setItem("cartproducts", JSON.stringify(state));
         },
 
 

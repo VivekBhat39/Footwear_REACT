@@ -6,10 +6,8 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { storeRemoveProduct, incrementQuantity, decrementQuantity } from '../state/cartSlice'
 
-
 export default function Cart() {
-	
-	let alltotal = 0;
+	let alltotal = 10;
 
 	let [count, setCount] = useState(1);
 
@@ -41,6 +39,41 @@ export default function Cart() {
 
 	// 	}
 	// },[])
+
+	const handlePayment = ()=>{
+		var options = {
+			"key": "rzp_live_Ay9af2dQeUH8A6",
+			"amount": (alltotal * 100),
+			"name": "Footware",
+			"description": "Footware website purchase",
+			"image": "https://www.abhijitgatade.com/assets/img/favicon.png",
+			"order_id": "",
+			"handler": function (response) {
+				console.log(response);
+				if(response.status_code == 200){
+					alert("Payment successful");
+				}
+				else{
+					alert("Payment Failed");
+				}
+			},
+			"prefill": {
+			  "name": "",
+			  "email": "",
+			  "contact": ""
+			},
+			"notes": {
+			  "address": ""
+			},
+			"theme": {
+			  "color": "#3399cc"
+			}
+		  };
+		var rzp1 = new window.Razorpay(options);
+		rzp1.open();
+	}
+
+
 
 	return (
 		<div>
@@ -149,6 +182,7 @@ export default function Cart() {
 										<div className="grand-total">
 											{/* <p><span><strong>Total:</strong></span> <span>$450.00</span></p> */}
 											<p><span><strong>Total:</strong></span> <span>{alltotal}</span></p>
+											<button className='btn btn-success' onClick={(e)=>{ handlePayment(); }}>Pay Now</button>
 										</div>
 									</div>
 								</div>

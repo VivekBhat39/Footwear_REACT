@@ -22,9 +22,9 @@ import Admins from './Components/Administrator/Admins';
 import Form from './Components/Administrator/Form';
 import Dashboard2 from './Components/Administrator/Dashboard2';
 import AddProduct from './Components/Administrator/AddProduct';
-
-
-
+import StepOne from './stepForm/StepOne'
+import StepTwo from './stepForm/StepTwo';
+import StepThree from './stepForm/StepThree';
 
 function App() {
 
@@ -53,14 +53,23 @@ function App() {
             <Route path='/admin/order' element={<Order />} />
             <Route path='/admin/fixedorder' element={<Fixedorder />} />
             <Route path='/admin/form' element={<Form />} />
+            <Route path='/admin/stepformone' element={<StepOne />} />
           </Route>
           {/* <Route path='/' element={<Logout />} /> */}
 
+
+
+          <Route path='/stepformone' element={<StepOne />} />
+          <Route path='/steptwo' element={<StepTwo />} />
+          <Route path='/stepthree' element={<StepThree />} />
 
         </Routes>
         {/* <Admins/> */}
         <Footer />
       </BrowserRouter>
+
+
+
 
     </div>
   );
