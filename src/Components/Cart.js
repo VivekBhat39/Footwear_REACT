@@ -5,6 +5,7 @@ import cartimg3 from '../images/item-8.jpg'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { storeRemoveProduct, incrementQuantity, decrementQuantity } from '../state/cartSlice'
+import { Link } from 'react-router-dom'
 
 export default function Cart() {
 	let alltotal = 10;
@@ -40,7 +41,7 @@ export default function Cart() {
 	// 	}
 	// },[])
 
-	const handlePayment = ()=>{
+	const handlePayment = () => {
 		var options = {
 			"key": "rzp_live_Ay9af2dQeUH8A6",
 			"amount": (alltotal * 100),
@@ -50,25 +51,25 @@ export default function Cart() {
 			"order_id": "",
 			"handler": function (response) {
 				console.log(response);
-				if(response.status_code == 200){
+				if (response.status_code == 200) {
 					alert("Payment successful");
 				}
-				else{
+				else {
 					alert("Payment Failed");
 				}
 			},
 			"prefill": {
-			  "name": "",
-			  "email": "",
-			  "contact": ""
+				"name": "",
+				"email": "",
+				"contact": ""
 			},
 			"notes": {
-			  "address": ""
+				"address": ""
 			},
 			"theme": {
-			  "color": "#3399cc"
+				"color": "#3399cc"
 			}
-		  };
+		};
 		var rzp1 = new window.Razorpay(options);
 		rzp1.open();
 	}
@@ -179,10 +180,16 @@ export default function Cart() {
 											<p><span>Delivery:</span> <span>$0.00</span></p>
 											<p><span>Discount:</span> <span>$45.00</span></p>
 										</div>
+
 										<div className="grand-total">
 											{/* <p><span><strong>Total:</strong></span> <span>$450.00</span></p> */}
-											<p><span><strong>Total:</strong></span> <span>{alltotal}</span></p>
-											<button className='btn btn-success' onClick={(e)=>{ handlePayment(); }}>Pay Now</button>
+											<p><span><strong>Total:</strong></span> <span>{alltotal}</span></p><br />
+											<div class="row">
+												<div class="col-md-12 text-center">
+													<p><Link to={"/checkout"} href="#" class="btn btn-primary">Proceed to Chekout</Link></p>
+												</div>
+											</div>
+											<button className='btn btn-success' onClick={(e) => { handlePayment(); }}>Pay Now</button>
 										</div>
 									</div>
 								</div>

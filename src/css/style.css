@@ -7357,7 +7357,7 @@ h1, h2, h3, h4, h5,
     margin: 0; } }
 
 .colorlib-nav .top-menu {
-  padding: 50px 0 10px 0; }
+  padding: 10px 0 10px 0; }
   @media (max-width: 767.98px) {
     .colorlib-nav .top-menu {
       padding: 28px 0; } }
@@ -7675,7 +7675,7 @@ h1, h2, h3, h4, h5,
 .colorlib-partner,
 .colorlib-intro,
 .colorlib-product {
-  padding: 7em 0;
+  padding: 2em 0;
   clear: both; }
 
 .colorlib-intro {

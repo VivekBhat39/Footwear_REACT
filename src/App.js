@@ -25,6 +25,8 @@ import AddProduct from './Components/Administrator/AddProduct';
 import StepOne from './stepForm/StepOne'
 import StepTwo from './stepForm/StepTwo';
 import StepThree from './stepForm/StepThree';
+import ProductDetail from './Components/ProductDetail';
+import Checkout from './Components/Checkout';
 
 function App() {
 
@@ -39,9 +41,11 @@ function App() {
           <Route path='/mens' element={<Mens />}></Route>
           <Route path='/womens' element={<Womens />}></Route>
           <Route path='/products' element={<Products />}></Route>
+          <Route path='/productdetail/:id' element={<ProductDetail />}></Route>
           <Route path='/contact' element={<Contact />}></Route>
           <Route path='/about' element={<About />}></Route>
           <Route path='/cart' element={<Cart />}></Route>
+          <Route path='/checkout' element={<Checkout />}></Route>
           <Route path='/adminlogin' element={<Login />}></Route>
 
           <Route path='/admin' element={<Dashboard />}>

@@ -13,21 +13,28 @@ function AddProduct() {
         price: "",
         mrp: "",
         image: "",
-        description: ""
-    })
-// alert(id)
+        description: "",
+        brand: "",
+        color: "",
+        size: ""
+    });
+    // alert(id)
     useEffect(() => {
         if (id !== undefined) {
 
             axios.get("https://63c663fcd307b76967380f55.mockapi.io/footwear/" + id)
                 .then((res) => {
+                    console.log(res.data);
                     setData({
                         title: res.data.title,
                         category: res.data.category,
                         price: res.data.price,
                         mrp: res.data.mrp,
                         image: res.data.image,
-                        description: res.data.description
+                        description: res.data.description,
+                        brand: res.data.brand,
+                        color: res.data.color,
+                        size: res.data.size
                     })
                 })
         }
@@ -54,8 +61,8 @@ function AddProduct() {
                     console.log(res.data);
                     navigate("/admin/productlists")
                 })
-                
-console.log(data);
+
+            console.log(data);
         }
 
     }
@@ -73,7 +80,7 @@ console.log(data);
                         </div>
                     </div>
                 </div>
-                
+
 
                 <div>
                     <div className="container">
@@ -95,9 +102,10 @@ console.log(data);
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Category</label>
                                     <select name='category' value={data.category} onChange={(e) => handleChange(e)} class="form-select form-control border border-secondary border-5" id="inputGroupSelect01">
-                                        <option selected>Choose...</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
+                                        <option>Choose Category...</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="kids">Kids</option>
                                     </select>
                                 </div>
                             </div>
@@ -126,6 +134,42 @@ console.log(data);
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Image</label>
                                     <input class="form-control border border-secondary border-5" type="file" id="formFile" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row mt-2">
+                            <div className="col-lg-3">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Brand</label>
+                                    <select name='brand' value={data.brand} onChange={(e) => handleChange(e)} class="form-select form-control border border-secondary border-5" id="inputGroupSelect01">
+                                        <option>Choose Brand...</option>
+                                        <option value="adidas">Adidas</option>
+                                        <option value="bata">Bata</option>
+                                        <option value="puma">Gucci</option>
+                                        <option value="nike">Nike</option>
+                                        <option value="puma">Puma</option>
+                                        <option value="puma">Skechers</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="col-lg-3">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Color</label>
+                                    <input type="text" name='color' value={data.color} onChange={(e) => handleChange(e)} class="form-control border border-secondary border-5" id="exampleInputEmail1" />
+                                </div>
+                            </div>
+                            <div className="col-lg-3">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Size</label>
+                                    <select name='size' value={data.size} onChange={(e) => handleChange(e)} class="form-select form-control border border-secondary border-5" id="inputGroupSelect01">
+                                        <option>Choose Size...</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
