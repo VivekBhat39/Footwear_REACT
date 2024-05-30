@@ -58,6 +58,18 @@ export default function Products() {
 		// })
 	};
 
+	function filter(filterValue) {
+		// alert(filterValue)
+		if (filterValue === "male" || filterValue === "female") {
+			const filteredProduct = productData.filter((product) => product.category === filterValue)
+			setFilteredProducts(filteredProduct)
+		}
+		if (filterValue === "adidas" || filterValue === "bata" || filterValue === "nike" || filterValue === "puma") {
+			const filteredProduct = productData.filter((product) => product.brand === filterValue)
+			setFilteredProducts(filteredProduct)
+		}
+	}
+
 	function sortProductsByPrice() {
 		const sorted = [...filteredProducts].sort((a, b) => a.price - b.price);
 		console.log(sorted)
@@ -156,8 +168,8 @@ export default function Products() {
 									<div class="side border mb-1">
 										<h3>Category</h3>
 										<ul>
-											<li><button className='btn p-0 text-secondary' onClick={() => categoryFilter("male")}>Male</button></li>
-											<li><button className='btn p-0 text-secondary' onClick={() => categoryFilter("female")}>Female</button></li>
+											<li><button className='btn p-0 text-secondary' onClick={() => filter("male")}>Male</button></li>
+											<li><button className='btn p-0 text-secondary' onClick={() => filter("female")}>Female</button></li>
 										</ul>
 									</div>
 								</div>
@@ -165,12 +177,12 @@ export default function Products() {
 									<div class="side border mb-1">
 										<h3>Brand</h3>
 										<ul>
-											<li><button className='btn p-0 text-secondary' onClick={() => brandFilter("adidas")}>Adidas</button></li>
-											<li><button className='btn p-0 text-secondary' onClick={() => brandFilter("bata")}>Bata</button></li>
-											<li><button className='btn p-0 text-secondary' onClick={() => brandFilter("gucci")}>Gucci</button></li>
-											<li><button className='btn p-0 text-secondary' onClick={() => brandFilter("nike")}>Nike</button></li>
-											<li><button className='btn p-0 text-secondary' onClick={() => brandFilter("puma")}>Puma</button></li>
-											<li><button className='btn p-0 text-secondary' onClick={() => brandFilter("skechers")}>Skechers</button></li>
+											<li><button className='btn p-0 text-secondary' onClick={() => filter("adidas")}>Adidas</button></li>
+											<li><button className='btn p-0 text-secondary' onClick={() => filter("bata")}>Bata</button></li>
+											{/* <li><button className='btn p-0 text-secondary' onClick={() => filter("gucci")}>Gucci</button></li> */}
+											<li><button className='btn p-0 text-secondary' onClick={() => filter("nike")}>Nike</button></li>
+											<li><button className='btn p-0 text-secondary' onClick={() => filter("puma")}>Puma</button></li>
+											{/* <li><button className='btn p-0 text-secondary' onClick={() => filter("skechers")}>Skechers</button></li> */}
 										</ul>
 									</div>
 								</div>

@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 export default function Header() {
 
-    let cart = useSelector((state) => state.cart);
+    let cart = useSelector((state) => state.cart.product);
 
     console.log(cart);
 

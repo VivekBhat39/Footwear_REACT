@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router';
+import Swal from 'sweetalert2';
 
 function AddProduct() {
 
@@ -12,11 +13,11 @@ function AddProduct() {
         category: "",
         price: "",
         mrp: "",
-        image: "",
         description: "",
         brand: "",
         color: "",
-        size: ""
+        size: "",
+        image: "",
     });
     // alert(id)
     useEffect(() => {
@@ -49,12 +50,22 @@ function AddProduct() {
     function handleSubmit(e) {
         e.preventDefault();
         if (id === undefined) {
-            axios.post("https://63c663fcd307b76967380f55.mockapi.io/footwear/", data)
-                .then((res) => {
-                    console.log(res.data);
-                    navigate("/admin/productlists")
-                })
-            // console.log(data);
+            if (data.title && data.category && data.price && data.mrp && data.description && data.brand && data.color && data.size && data.image) {
+                axios.post("https://63c663fcd307b76967380f55.mockapi.io/footwear/", data)
+                    .then((res) => {
+                        console.log(res.data);
+                        navigate("/admin/productlists")
+                    })
+                // console.log(data);
+            }else{
+                // alert("All Fields are Mandatory !!!")
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "All Fields are Mandatory !!!",
+                  });
+            }
+
         } else {
             axios.put("https://63c663fcd307b76967380f55.mockapi.io/footwear/" + id, data)
                 .then((res) => {
@@ -146,10 +157,10 @@ function AddProduct() {
                                         <option>Choose Brand...</option>
                                         <option value="adidas">Adidas</option>
                                         <option value="bata">Bata</option>
-                                        <option value="puma">Gucci</option>
+                                        {/* <option value="puma">Gucci</option> */}
                                         <option value="nike">Nike</option>
                                         <option value="puma">Puma</option>
-                                        <option value="puma">Skechers</option>
+                                        {/* <option value="puma">Skechers</option> */}
                                     </select>
                                 </div>
                             </div>

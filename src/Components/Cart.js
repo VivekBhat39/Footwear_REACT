@@ -8,11 +8,12 @@ import { storeRemoveProduct, incrementQuantity, decrementQuantity } from '../sta
 import { Link } from 'react-router-dom'
 
 export default function Cart() {
-	let alltotal = 10;
+	const [allTotal, setAllTotal] = useState(0);
+	const [coupon, setCoupon] = useState(0);
 
 	let [count, setCount] = useState(1);
 
-	let data = useSelector((state) => state.cart);
+	let data = useSelector((state) => state.cart.product);
 	let dispatch = useDispatch();
 	// console.log(data);
 
@@ -31,20 +32,18 @@ export default function Cart() {
 	};
 
 
-	// useEffect(()=>{
-	// 	let alltotal = 0;
-	// 	for (let index = 0; index < data.length; index++) {
-	// 		const element = data[index];
-	// 		if (element[i]) {
-	// 		}
-
-	// 	}
-	// },[])
+	useEffect(() => {
+		let total = 0;
+		data.forEach(item => {
+			total += item.price * item.quantity;
+		});
+		setAllTotal(total);
+	}, [data]);
 
 	const handlePayment = () => {
 		var options = {
 			"key": "rzp_live_Ay9af2dQeUH8A6",
-			"amount": (alltotal * 100),
+			"amount": (allTotal * 100),
 			"name": "Footware",
 			"description": "Footware website purchase",
 			"image": "https://www.abhijitgatade.com/assets/img/favicon.png",
@@ -114,7 +113,7 @@ export default function Cart() {
 						{
 							data.map((eachData) => {
 
-								alltotal += eachData.price * count
+								// alltotal += eachData.price * count
 
 
 								return (
@@ -165,10 +164,10 @@ export default function Cart() {
 									<form action="#">
 										<div className="row form-group">
 											<div className="col-sm-9">
-												<input type="text" name="quantity" className="form-control input-number" placeholder="Your Coupon Number..." />
+												<input onChange={(e)=>setCoupon(e.target.value)} type="text" name="quantity" className="form-control input-number" placeholder="Your Coupon Number..." />
 											</div>
 											<div className="col-sm-3">
-												<input type="submit" value="Apply Coupon" className="btn btn-primary" />
+												<button type="submit" value="Apply Coupon" className="btn btn-primary" >Apply Coupon</button>
 											</div>
 										</div>
 									</form>
@@ -176,14 +175,14 @@ export default function Cart() {
 								<div className="col-sm-4 text-center">
 									<div className="total">
 										<div className="sub">
-											<p><span>Subtotal:</span> <span>$200.00</span></p>
-											<p><span>Delivery:</span> <span>$0.00</span></p>
-											<p><span>Discount:</span> <span>$45.00</span></p>
+											<p><span>Subtotal:</span> <span>₹ {allTotal}/-</span></p>
+											<p><span>Delivery:</span> <span>₹ 0.00</span></p>
+											<p><span>Discount:</span> <span>₹ 0.00</span></p>
 										</div>
 
 										<div className="grand-total">
 											{/* <p><span><strong>Total:</strong></span> <span>$450.00</span></p> */}
-											<p><span><strong>Total:</strong></span> <span>{alltotal}</span></p><br />
+											<p><span><strong>Total:</strong></span> <span>₹ {allTotal}/-</span></p><br />
 											<div class="row">
 												<div class="col-md-12 text-center">
 													<p><Link to={"/checkout"} href="#" class="btn btn-primary">Proceed to Chekout</Link></p>

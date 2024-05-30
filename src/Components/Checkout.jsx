@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Checkout() {
+
+    const [data, setData] = useState({
+        country: "",
+        name: "",
+        surname: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: "",
+        email: "",
+        mobile: ""
+    })
+
+    function handleChange(e) {
+        setData({ ...data, [e.target.id]: e.target.value })
+        console.log(data);
+    }
     return (
         <div>
             <div class="breadcrumbs">
@@ -26,13 +43,13 @@ export default function Checkout() {
                                             <label for="country">Select Country</label>
                                             <div class="form-field">
                                                 <i class="icon icon-arrow-down3"></i>
-                                                <select name="people" id="people" class="form-control">
-                                                    <option value="#">Select country</option>
-                                                    <option value="#">Alaska</option>
-                                                    <option value="#">China</option>
-                                                    <option value="#">Japan</option>
-                                                    <option value="#">Korea</option>
-                                                    <option value="#">Philippines</option>
+                                                <select onChange={handleChange} name="people" id="country" class="form-control">
+                                                    <option>Select country</option>
+                                                    <option value="india">India</option>
+                                                    <option value="china">China</option>
+                                                    <option value="japan">Japan</option>
+                                                    <option value="korea">Korea</option>
+                                                    <option value="Philippines">Philippines</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -41,71 +58,64 @@ export default function Checkout() {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">First Name</label>
-                                            <input type="text" id="fname" class="form-control" placeholder="Your firstname"/>
+                                            <input onChange={handleChange} type="text" id="name" class="form-control" placeholder="Your firstname" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="lname">Last Name</label>
-                                            <input type="text" id="lname" class="form-control" placeholder="Your lastname"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="companyname">Company Name</label>
-                                            <input type="text" id="companyname" class="form-control" placeholder="Company Name"/>
+                                            <input onChange={handleChange} type="text" id="surname" class="form-control" placeholder="Your lastname" />
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="fname">Address</label>
-                                            <input type="text" id="address" class="form-control" placeholder="Enter Your Address"/>
+                                            <input onChange={handleChange} type="text" id="address" class="form-control" placeholder="Enter Your Address" />
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" id="address2" class="form-control" placeholder="Second Address"/>
-                                        </div>
+                                        {/* <div class="form-group">
+                                            <input onChange={handleChange} type="text" id="address2" class="form-control" placeholder="Second Address"/>
+                                        </div> */}
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="companyname">Town/City</label>
-                                            <input type="text" id="towncity" class="form-control" placeholder="Town or City"/>
+                                            <input onChange={handleChange} type="text" id="city" class="form-control" placeholder="Town or City" />
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="stateprovince">State/Province</label>
-                                            <input type="text" id="fname" class="form-control" placeholder="State Province"/>
+                                            <label for="stateprovince">State</label>
+                                            <input onChange={handleChange} type="text" id="state" class="form-control" placeholder="State Province" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="lname">Zip/Postal Code</label>
-                                            <input type="text" id="zippostalcode" class="form-control" placeholder="Zip / Postal"/>
+                                            <input onChange={handleChange} type="text" id="zip" class="form-control" placeholder="Zip / Postal" />
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="email">E-mail Address</label>
-                                            <input type="text" id="email" class="form-control" placeholder="State Province"/>
+                                            <input onChange={handleChange} type="text" id="email" class="form-control" placeholder="State Province" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="Phone">Phone Number</label>
-                                            <input type="text" id="zippostalcode" class="form-control" placeholder=""/>
+                                            <input onChange={handleChange} type="text" id="mobile" class="form-control" placeholder="" />
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="radio">
-                                                <label><input type="radio" name="optradio"/> Create an Account? </label>
-                                                <label><input type="radio" name="optradio"/> Ship to different address</label>
+                                                <label><input type="radio" name="optradio" /> Create an Account? </label>
+                                                <label><input type="radio" name="optradio" /> Ship to different address</label>
                                             </div>
                                         </div>
                                     </div>
@@ -140,14 +150,14 @@ export default function Checkout() {
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <div class="radio">
-                                                    <label><input type="radio" name="optradio"/> Direct Bank Tranfer</label>
+                                                    <label><input type="radio" name="optradio" /> Direct Bank Tranfer</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <div class="radio">
-                                                    <label><input type="radio" name="optradio"/> Check Payment</label>
+                                                    <label><input type="radio" name="optradio" /> Check Payment</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -155,7 +165,7 @@ export default function Checkout() {
                                             <div class="col-md-12">
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="optradio"/> Paypal</label>
+                                                        <input type="radio" name="optradio" /> Paypal</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -163,7 +173,7 @@ export default function Checkout() {
                                             <div class="col-md-12">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" value=""/> I have read and accept the terms and conditions</label>
+                                                        <input type="checkbox" value="" /> I have read and accept the terms and conditions</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -172,7 +182,7 @@ export default function Checkout() {
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <p><a href="#" class="btn btn-primary">Place an order</a></p>
+                                    <p><button href="#" class="btn btn-primary">Place an Order</button></p>
                                 </div>
                             </div>
                         </div>

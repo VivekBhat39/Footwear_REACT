@@ -62,6 +62,7 @@ const Product = () => {
                                         <th scope="col">#</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Title</th>
+                                        <th scope="col">Brand</th>
                                         <th scope="col">Category</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">MRP</th>
@@ -78,6 +79,7 @@ const Product = () => {
                                                         <img src={eachData.image} alt="Shoes" width="100" height="100"></img>
                                                     </td>
                                                     <td>{eachData.title}</td>
+                                                    <td>{eachData.brand}</td>
                                                     <td>{eachData.category}</td>
                                                     <td>{eachData.price}</td>
                                                     <td><del>{eachData.mrp}</del></td>
