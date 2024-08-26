@@ -4,16 +4,17 @@ import cartimg2 from '../images/item-7.jpg'
 import cartimg3 from '../images/item-8.jpg'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { storeRemoveProduct, incrementQuantity, decrementQuantity } from '../state/cartSlice'
+import { storeRemoveProduct, incrementQuantity, decrementQuantity, setTotalAmount, setDiscountAmount } from '../state/cartSlice'
 import { Link } from 'react-router-dom'
 
 export default function Cart() {
 	const [allTotal, setAllTotal] = useState(0);
 	const [coupon, setCoupon] = useState(0);
+	const [discount, setDiscount] = useState(0);
 
 	let [count, setCount] = useState(1);
 
-	let data = useSelector((state) => state.cart.product);
+	let data = useSelector((state) => state.cart.products);
 	let dispatch = useDispatch();
 	// console.log(data);
 
@@ -39,6 +40,18 @@ export default function Cart() {
 		});
 		setAllTotal(total);
 	}, [data]);
+
+	function handleCoupon() {
+		let promoCode = coupon.match(/(\d+)/);
+
+		if (promoCode) {
+			const discountValue = parseInt(promoCode[0]);
+			// console.log(typeof(discountValue));
+			setDiscount(discountValue)
+			// console.log(discountValue);
+			dispatch(setDiscountAmount(discountValue))
+		}
+	};
 
 	const handlePayment = () => {
 		var options = {
@@ -164,10 +177,13 @@ export default function Cart() {
 									<form action="#">
 										<div className="row form-group">
 											<div className="col-sm-9">
-												<input onChange={(e)=>setCoupon(e.target.value)} type="text" name="quantity" className="form-control input-number" placeholder="Your Coupon Number..." />
+												<input onChange={(e) => {
+													setCoupon(e.target.value)
+												}} type="text" name="quantity" className="form-control input-number" placeholder="Your Coupon Number..." />
 											</div>
 											<div className="col-sm-3">
-												<button type="submit" value="Apply Coupon" className="btn btn-primary" >Apply Coupon</button>
+												<button onClick={handleCoupon} type="button" value="Apply Coupon" className="btn btn-primary" > Apply Coupon</button>
+												{/* <button onClick={()=>setDiscount(0)} type="button" value="Apply Coupon" className="btn btn-primary" >Remove Coupon</button> */}
 											</div>
 										</div>
 									</form>
@@ -177,18 +193,20 @@ export default function Cart() {
 										<div className="sub">
 											<p><span>Subtotal:</span> <span>₹ {allTotal}/-</span></p>
 											<p><span>Delivery:</span> <span>₹ 0.00</span></p>
-											<p><span>Discount:</span> <span>₹ 0.00</span></p>
+											<p><span>Discount:</span> <span>₹ {discount}.00</span></p>
 										</div>
 
 										<div className="grand-total">
 											{/* <p><span><strong>Total:</strong></span> <span>$450.00</span></p> */}
-											<p><span><strong>Total:</strong></span> <span>₹ {allTotal}/-</span></p><br />
+											<p><span><strong>Total:</strong></span> <span>₹ {allTotal - discount}/-</span></p><br />
 											<div class="row">
 												<div class="col-md-12 text-center">
-													<p><Link to={"/checkout"} href="#" class="btn btn-primary">Proceed to Chekout</Link></p>
+													<Link to={"/checkout"} href="#" >
+														<button class="btn btn-primary" onClick={() => dispatch(setTotalAmount(allTotal - discount))}>Proceed to Chekout</button>
+													</Link>
 												</div>
 											</div>
-											<button className='btn btn-success' onClick={(e) => { handlePayment(); }}>Pay Now</button>
+											{/* <button className='btn btn-success' onClick={(e) => { handlePayment(); }}>Pay Now</button> */}
 										</div>
 									</div>
 								</div>

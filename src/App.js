@@ -9,7 +9,7 @@ import Contact from './Components/Contact';
 import About from './Components/About';
 import Cart from './Components/Cart';
 import Footer from './Components/Footer';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './Components/Administrator/Login';
 import Admin from './Components/Administrator/Login';
 import Dashboard from './Components/Administrator/Dashboard';
@@ -27,6 +27,7 @@ import StepTwo from './stepForm/StepTwo';
 import StepThree from './stepForm/StepThree';
 import ProductDetail from './Components/ProductDetail';
 import Checkout from './Components/Checkout';
+import OrderComplete from './Components/OrderComplete';
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
           <Route path='/about' element={<About />}></Route>
           <Route path='/cart' element={<Cart />}></Route>
           <Route path='/checkout' element={<Checkout />}></Route>
+          <Route path='/ordercomplete' element={<OrderComplete />}></Route>
           <Route path='/adminlogin' element={<Login />}></Route>
 
           <Route path='/admin' element={<Dashboard />}>

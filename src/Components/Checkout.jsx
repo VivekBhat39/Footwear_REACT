@@ -1,6 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 export default function Checkout() {
+
+    const [terms, setTerms] = useState(false)
+
+    console.log(terms);
+    const navigate = useNavigate();
+    const finalAmount = useSelector((state) => state.cart.finalAmount);
+    const cartProducts = useSelector((state) => state.cart.products);
+    // console.log(cartProducts);
 
     const [data, setData] = useState({
         country: "",
@@ -17,7 +27,48 @@ export default function Checkout() {
     function handleChange(e) {
         setData({ ...data, [e.target.id]: e.target.value })
         console.log(data);
-    }
+    };
+
+    function handlePayment() {
+        if (terms) {
+            var options = {
+                "key": "rzp_test_4yosHYDduPYmKN", // Enter the Key ID generated from the Dashboard
+                "amount": finalAmount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "Cool Footwear", //your business name
+                "description": "Test Transaction",
+                "image": "http://localhost:3001/static/media/brand.1356b354e46d75d0c876.png",
+                "order_id": "", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+                "handler": function (response) {
+                    console.log(response);
+                    if (response.razorpay_payment_id) {
+                        // alert("Payment Successful")
+                        navigate("/ordercomplete")
+                    } else {
+                        alert("Payment Failed")
+                    }
+                },
+                "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+                    "name": "Gaurav Kumar", //your customer's name
+                    "email": "gaurav.kumar@example.com",
+                    "contact": "9000090000" //Provide the customer's phone number for better conversion rates 
+                },
+                "notes": {
+                    "address": "Razorpay Corporate Office"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new window.Razorpay(options);
+            rzp1.open();
+        } else {
+            alert("Accept Terms and Condition !")
+        }
+
+    };
+
     return (
         <div>
             <div class="breadcrumbs">
@@ -34,6 +85,7 @@ export default function Checkout() {
             <div class="colorlib-product">
                 <div class="container">
                     <div class="row">
+                        {/* --------- Billing Details ------- */}
                         <div class="col-lg-8">
                             <form method="post" class="colorlib-form">
                                 <h2>Billing Details</h2>
@@ -122,7 +174,11 @@ export default function Checkout() {
                                 </div>
                             </form>
                         </div>
+                        {/* --------- Billing Details ------- */}
 
+
+
+                        {/* --------- Cart Total ------------ */}
                         <div class="col-lg-4">
                             <div class="row">
                                 <div class="col-md-12">
@@ -130,14 +186,21 @@ export default function Checkout() {
                                         <h2>Cart Total</h2>
                                         <ul>
                                             <li>
-                                                <span>Subtotal</span> <span>$100.00</span>
+                                                <span>Subtotal</span> <span>{finalAmount}/-</span>
                                                 <ul>
-                                                    <li><span>1 x Product Name</span> <span>$99.00</span></li>
-                                                    <li><span>1 x Product Name</span> <span>$78.00</span></li>
+                                                    {
+                                                        cartProducts.map((product) => {
+                                                            return (
+                                                                <li><span>{product.quantity}  x  {product.title}</span> <span>{product.price}/-</span></li>
+                                                            )
+                                                        })
+                                                    }
+                                                    {/* <li><span>1 x Product Name</span> <span>$99.00</span></li> */}
+                                                    {/* <li><span>1 x Product Name</span> <span>$78.00</span></li> */}
                                                 </ul>
                                             </li>
-                                            <li><span>Shipping</span> <span>$0.00</span></li>
-                                            <li><span>Order Total</span> <span>$180.00</span></li>
+                                            <li><span>Shipping</span> <span>50.00/-</span></li>
+                                            <li><span>Order Total</span> <span>{finalAmount - 50.00}/-</span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -173,7 +236,7 @@ export default function Checkout() {
                                             <div class="col-md-12">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" value="" /> I have read and accept the terms and conditions</label>
+                                                        <input onChange={(e) => setTerms(true)} type="checkbox" value="checked" /> I have read and accept the terms and conditions</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -182,10 +245,13 @@ export default function Checkout() {
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <p><button href="#" class="btn btn-primary">Place an Order</button></p>
+                                    <p><button onClick={handlePayment} class="btn btn-primary">Place an Order</button></p>
                                 </div>
                             </div>
                         </div>
+
+                        {/* --------- Cart Total ------------ */}
+
                     </div>
                 </div>
             </div>

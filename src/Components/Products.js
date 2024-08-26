@@ -16,7 +16,8 @@ export default function Products() {
 	const [category, setCategory] = useState("");
 
 	function fetchProductData() {
-		axios.get("https://63c663fcd307b76967380f55.mockapi.io/footwear")
+		// axios.get("https://63c663fcd307b76967380f55.mockapi.io/footwear")
+		axios.get(process.env.REACT_APP_BASE_URL + "/footwear")
 			.then((res) => {
 				console.log(res.data);
 				setProductData(res.data)
@@ -28,6 +29,9 @@ export default function Products() {
 
 	useEffect(() => {
 		fetchProductData();
+		console.log(process.env.REACT_APP_MY_NAME);
+		// console.log(process.env.REACT_APP_BASE_URL);
+  
 	}, [])
 
 	function categoryFilter(category) {
