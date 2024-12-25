@@ -31,7 +31,7 @@ export default function Products() {
 		fetchProductData();
 		console.log(process.env.REACT_APP_MY_NAME);
 		// console.log(process.env.REACT_APP_BASE_URL);
-  
+
 	}, [])
 
 	function categoryFilter(category) {
@@ -72,6 +72,24 @@ export default function Products() {
 			const filteredProduct = productData.filter((product) => product.brand === filterValue)
 			setFilteredProducts(filteredProduct)
 		}
+	};
+
+	function handleSearch(e) {
+		const searchText = e.target.value.toLowerCase();
+
+		if (searchText === "") {
+			setFilteredProducts(productData)
+		} else {
+			const result = productData.filter((res) => {
+				return (
+					res.title.toLowerCase().includes(searchText) ||
+					res.price.toLowerCase().includes(searchText) ||
+					res.brand.toLowerCase().includes(searchText)
+				)
+			});
+			setFilteredProducts(result)
+		}
+
 	}
 
 	function sortProductsByPrice() {
@@ -106,6 +124,9 @@ export default function Products() {
 			<div class="colorlib-product">
 				<div class="container">
 					<div className="col-12 d-flex justify-content-end">
+						<div className="col-lg-9">
+							<input onChange={(e) => handleSearch(e)} className='form-control' type="text" placeholder='Seacrh' />
+						</div>
 						<div className="d-flex align-items-center" style={{ padding: '10px' }}>
 							<label htmlFor="s-result-sort-select" className="me-2 mt-2" style={{ fontWeight: 'bold' }}>
 								Sort by:
