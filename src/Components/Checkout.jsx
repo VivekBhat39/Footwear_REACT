@@ -26,7 +26,7 @@ export default function Checkout() {
         email: "",
         mobile: "",
         orders: cartProducts,
-        subTotal : finalAmount
+        subTotal: finalAmount
     })
 
     function handleChange(e) {
@@ -35,23 +35,23 @@ export default function Checkout() {
 
     function handleSubmit() {
 
-        // if (data.country.trim() === "" || data.name.trim() === "" || data.surname.trim() === "" ||
-        //     data.address.trim() === "" || data.city.trim() === "" || data.state.trim() === "" ||
-        //     data.zip.trim() === "" || data.email.trim() === "" || data.mobile.trim() === "") {
+        if (data.country.trim() === "" || data.name.trim() === "" || data.surname.trim() === "" ||
+            data.address.trim() === "" || data.city.trim() === "" || data.state.trim() === "" ||
+            data.zip.trim() === "" || data.email.trim() === "" || data.mobile.trim() === "") {
 
-        //     Swal.fire({
-        //         icon: "warning",
-        //         text: "All Fields are Mandatory !"
-        //     });
+            Swal.fire({
+                icon: "warning",
+                text: "All Fields are Mandatory !"
+            });
 
-        // } else {
+        } else {
 
-        axios.post(process.env.REACT_APP_BASE_URL + "/orders", data)
-            .then((res) => {
-                console.log(res.data);
-                // handlePayment();
-            })
-        // }
+            axios.post(process.env.REACT_APP_BASE_URL + "/orders", data)
+                .then((res) => {
+                    console.log(res.data);
+                    handlePayment();
+                })
+        }
 
     }
 
