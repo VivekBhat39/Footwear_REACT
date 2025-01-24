@@ -23,7 +23,7 @@ function Dashboard() {
                                 {/* <li><Link to="/admin/productcategory">Product Category</Link></li> */}
                                 <li className="nav-link link-dark"><Link className="text-dark" to="/admin/productlists">Products</Link></li>
                                 <li className="nav-link link-dark"><Link className="text-dark" to="/admin/AddProduct">Add Product</Link></li>
-                                <li className="nav-link link-dark"><Link className="text-dark" to="/admin/order">Order</Link></li>
+                                <li className="nav-link link-dark"><Link className="text-dark" to="/admin/orders">Order</Link></li>
                                 {/* <li className="nav-link link-dark"><Link className="text-dark" to="/admin/fixedorder">Fixed Order</Link></li> */}
                                 <li className="nav-link link-dark"><Link className="text-dark" to="/admin/sidebar">Sidebar</Link></li>
                                 <li className="nav-link link-light"><Button style={{"backgroundColor":"#88c8bc", "color": "black" }} onClick={(e)=> logout(e) }>Logout</Button></li>

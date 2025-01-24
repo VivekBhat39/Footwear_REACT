@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -23,7 +24,9 @@ export default function Checkout() {
         state: "",
         zip: "",
         email: "",
-        mobile: ""
+        mobile: "",
+        orders: cartProducts,
+        subTotal : finalAmount
     })
 
     function handleChange(e) {
@@ -32,13 +35,23 @@ export default function Checkout() {
 
     function handleSubmit() {
 
-        if (data.country.trim() === "" || data.name.trim() === "" || data.surname.trim() === "" ||
-            data.address.trim() === "" || data.city.trim() === "" || data.state.trim() === "" ||
-            data.zip.trim() === "" || data.email.trim() === "" || data.mobile.trim() === "") {
-            alert("All Fields are Mandatory")
-        } else {
-            handlePayment()
-        }
+        // if (data.country.trim() === "" || data.name.trim() === "" || data.surname.trim() === "" ||
+        //     data.address.trim() === "" || data.city.trim() === "" || data.state.trim() === "" ||
+        //     data.zip.trim() === "" || data.email.trim() === "" || data.mobile.trim() === "") {
+
+        //     Swal.fire({
+        //         icon: "warning",
+        //         text: "All Fields are Mandatory !"
+        //     });
+
+        // } else {
+
+        axios.post(process.env.REACT_APP_BASE_URL + "/orders", data)
+            .then((res) => {
+                console.log(res.data);
+                // handlePayment();
+            })
+        // }
 
     }
 

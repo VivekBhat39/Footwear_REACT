@@ -15,7 +15,7 @@ import Admin from './Components/Administrator/Login';
 import Dashboard from './Components/Administrator/Dashboard';
 import ProductCategory from './Components/Administrator/ProductCategory';
 import Product from './Components/Administrator/Product';
-import Order from './Components/Administrator/Order';
+import Orders from './Components/Administrator/Orders';
 import Fixedorder from './Components/Administrator/Fixedorder';
 import Logout from './Components/Administrator/Logout';
 import Admins from './Components/Administrator/Admins';
@@ -56,7 +56,7 @@ function App() {
             <Route path='/admin/productlists' element={<Product />} />
             <Route path='/admin/addproduct' element={<AddProduct />} />
             <Route path='/admin/addproduct/:id' element={<AddProduct />} />
-            <Route path='/admin/order' element={<Order />} />
+            <Route path='/admin/orders' element={<Orders />} />
             <Route path='/admin/fixedorder' element={<Fixedorder />} />
             <Route path='/admin/form' element={<Form />} />
             <Route path='/admin/stepformone' element={<StepOne />} />
