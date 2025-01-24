@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 export default function Checkout() {
 
+    //Check Terms & Conditions
     const [terms, setTerms] = useState(false)
 
-    console.log(terms);
+    // console.log(terms);
     const navigate = useNavigate();
     const finalAmount = useSelector((state) => state.cart.finalAmount);
     const cartProducts = useSelector((state) => state.cart.products);
@@ -26,10 +28,23 @@ export default function Checkout() {
 
     function handleChange(e) {
         setData({ ...data, [e.target.id]: e.target.value })
-        console.log(data);
     };
 
+    function handleSubmit() {
+
+        if (data.country.trim() === "" || data.name.trim() === "" || data.surname.trim() === "" ||
+            data.address.trim() === "" || data.city.trim() === "" || data.state.trim() === "" ||
+            data.zip.trim() === "" || data.email.trim() === "" || data.mobile.trim() === "") {
+            alert("All Fields are Mandatory")
+        } else {
+            handlePayment()
+        }
+
+    }
+
     function handlePayment() {
+
+        // alert("Proceed to Payment")
         if (terms) {
             var options = {
                 "key": "rzp_test_4yosHYDduPYmKN", // Enter the Key ID generated from the Dashboard
@@ -64,7 +79,11 @@ export default function Checkout() {
             var rzp1 = new window.Razorpay(options);
             rzp1.open();
         } else {
-            alert("Accept Terms and Condition !")
+            // alert("Accept Terms and Condition !")
+            Swal.fire({
+                icon: "warning",
+                text: "Accept Terms and Condition !"
+            });
         }
 
     };
@@ -146,7 +165,7 @@ export default function Checkout() {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="lname">Zip/Postal Code</label>
-                                            <input onChange={handleChange} type="text" id="zip" class="form-control" placeholder="Zip / Postal" />
+                                            <input onChange={handleChange} type="number" id="zip" class="form-control" placeholder="Zip / Postal" />
                                         </div>
                                     </div>
 
@@ -159,15 +178,15 @@ export default function Checkout() {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="Phone">Phone Number</label>
-                                            <input onChange={handleChange} type="text" id="mobile" class="form-control" placeholder="" />
+                                            <input onChange={handleChange} type="number" id="mobile" class="form-control" placeholder="" />
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="radio">
-                                                <label><input type="radio" name="optradio" /> Create an Account? </label>
-                                                <label><input type="radio" name="optradio" /> Ship to different address</label>
+                                                {/* <label><input type="radio" name="optradio" /> Create an Account? </label>
+                                                <label><input type="radio" name="optradio" /> Ship to different address</label> */}
                                             </div>
                                         </div>
                                     </div>
@@ -236,7 +255,9 @@ export default function Checkout() {
                                             <div class="col-md-12">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input onChange={(e) => setTerms(true)} type="checkbox" value="checked" /> I have read and accept the terms and conditions</label>
+                                                        <input className='me-1' checked={terms} onChange={(e) => setTerms(e.target.checked)} type="checkbox" value="checked" />
+                                                        I have read and accept the terms and conditions
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -245,7 +266,7 @@ export default function Checkout() {
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <p><button onClick={handlePayment} class="btn btn-primary">Place an Order</button></p>
+                                    <p><button onClick={handleSubmit} class="btn btn-primary">Place an Order</button></p>
                                 </div>
                             </div>
                         </div>
