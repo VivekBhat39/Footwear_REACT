@@ -72,7 +72,8 @@ export default function Checkout() {
                     console.log(response);
                     if (response.razorpay_payment_id) {
                         // alert("Payment Successful")
-                        navigate("/ordercomplete")
+                        // navigate("/ordercomplete")
+                        window.location.href = '/ordercomplete';
                     } else {
                         alert("Payment Failed")
                     }
