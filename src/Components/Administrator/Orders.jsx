@@ -64,7 +64,7 @@ const Orders = () => {
                                 <td>{order.subTotal}</td>
                                 <td>
 
-                                    <button onClick={() => handleView(order)} type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <button onClick={() => handleView(order)} type="button" style={{ "backgroundColor": "#88c8bc", "color": "black" }} class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         View
                                     </button>
                                 </td>
@@ -138,7 +138,7 @@ const Orders = () => {
                             )}
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style={{ "backgroundColor": "#88c8bc", "color": "black" }}>Close</button>
                             {/* <button type="button" class="btn btn-primary">Save changes</button> */}
                         </div>
                     </div>

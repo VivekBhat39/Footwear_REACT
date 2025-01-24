@@ -269,7 +269,7 @@ export default function Products() {
 									<div class="side border mb-1">
 										<ul>
 											<div class="d-grid gap-2 col-12 mx-auto">
-												<button onClick={() => fetchProductData()} class="btn btn-primary" type="button">Clear Filter</button>
+												<button onClick={() => fetchProductData()} class="btn btn-primary" type="button" style={{ "backgroundColor": "#88c8bc", "color": "black" }}>Clear Filter</button>
 											</div>
 										</ul>
 									</div>
@@ -329,7 +329,7 @@ export default function Products() {
 															<h2><a href="#">{product.brand} <br /> {product.title}</a></h2>
 															<span class="price"><h4>₹{product.price}/-</h4></span>
 															<span class="price"><del><h5>₹{product.mrp}/-</h5></del></span>
-															<button onClick={(e) => addToCart(e, product)} className='btn btn-primary'><i class="icon-shopping-cart"></i> Add to Cart</button>
+															<button onClick={(e) => addToCart(e, product)} style={{ "backgroundColor": "#88c8bc", "color": "black" }} className='btn btn-primary'><i class="icon-shopping-cart"></i> Add to Cart</button>
 														</div>
 													</div>
 												</div>

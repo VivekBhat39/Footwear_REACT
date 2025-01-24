@@ -280,7 +280,7 @@ export default function Checkout() {
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <p><button onClick={handleSubmit} class="btn btn-primary">Place an Order</button></p>
+                                    <p><button onClick={handleSubmit} class="btn btn-primary" style={{ "backgroundColor": "#88c8bc", "color": "black" }}>Place an Order</button></p>
                                 </div>
                             </div>
                         </div>

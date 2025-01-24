@@ -202,7 +202,7 @@ export default function Cart() {
 											<div class="row">
 												<div class="col-md-12 text-center">
 													<Link to={"/checkout"} href="#" >
-														<button class="btn btn-primary" onClick={() => dispatch(setTotalAmount(allTotal - discount))}>Proceed to Chekout</button>
+														<button style={{ "backgroundColor": "#88c8bc", "color": "black" }} class="btn btn-primary" onClick={() => dispatch(setTotalAmount(allTotal - discount))}>Proceed to Chekout</button>
 													</Link>
 												</div>
 											</div>
